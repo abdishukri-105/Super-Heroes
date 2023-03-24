@@ -20,8 +20,6 @@ class PowersController < ApplicationController
         render json: power.to_json(except: [:created_at, :updated_at]), status: :created
     end
 
-  
-  
   private
   
     def find_power
