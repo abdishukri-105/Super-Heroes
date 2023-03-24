@@ -2,7 +2,7 @@
 This is a RESTful API for managing superheroes built with Ruby on Rails. It features three models: Hero, Power, and HeroPower. The Hero model has a name and a super_name, while the Power model has a name and a description. The HeroPower model serves as a join table between Hero and Power, and has a strength attribute.
 
 ## live link
-   - [live link](https://pizza-shop-es0c.onrender.com)
+   - [live link](https://super-heroes.onrender.com)
 
 ## Topics
 - Models
