@@ -21,4 +21,5 @@ class HeroesController < ApplicationController
     def render_not_found_response
       render json: { error: "hero not found" }, status: :not_found
     end
+    
 end

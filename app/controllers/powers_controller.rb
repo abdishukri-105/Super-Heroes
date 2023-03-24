@@ -1,36 +1,43 @@
 class PowersController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        restaurants = Restaurant.all
-        render json: restaurants.to_json(except: [:created_at, :updated_at])
+        powers = Power.all
+        render json: powers.to_json(except: [:created_at, :updated_at])
     end
   
     def show
-      restaurant = find_restaurant
-      render json: restaurant.to_json(only: [:id, :name, :address], include: [pizzas: { except: [:created_at, :updated_at]}])
+      power = find_power
+      render json: power.to_json(except: [:created_at, :updated_at])
     end
     
-    def destroy
-      restaurant = find_restaurant
-      restaurant.destroy
-      head :no_content
+    def update
+        power = find_power
+        power.update!(power_params)
+        render json: power.to_json(except: [:created_at, :updated_at]), status: :created
     end
+
   
   
   private
   
-    def find_restaurant
-      Restaurant.find(params[:id])
+    def find_power
+      Power.find(params[:id])
     end
   
-    def restaurant_params
-      params.permit(:name, :address)
+    def power_params
+      params.permit(:name, :description)
     end
   
     def render_not_found_response
-      render json: { error: "restaurant not found" }, status: :not_found
+      render json: { error: "power not found" }, status: :not_found
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
   
 end
