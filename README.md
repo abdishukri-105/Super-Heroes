@@ -18,17 +18,19 @@ To get started, clone the repository and navigate to the project directory:
 
     git clone https://github.com/abdishukri-105/Super-Heroes
 
-cd pizza-shop
+cd super_heroes
 
 Then, install the required dependencies using Bundler:
 
     bundle install
 
  run the migrations:
-
-
     
-    rails db:migrate
+    rails db:migrate 
+
+  seed data 
+  
+      rails db:seed    
 ## Usage
 Start the server with:
 
